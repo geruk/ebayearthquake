@@ -13,3 +13,5 @@ Copyrighted by DAN geruk@geruk.me.
  * Allow location change and look up API with different parameters
  * Switch between list view and map view
  * Better Material Design transition between item click and map view.
+
+![Demo](demo.gif)
