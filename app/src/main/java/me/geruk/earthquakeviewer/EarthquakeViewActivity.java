@@ -27,5 +27,4 @@ public class EarthquakeViewActivity extends AppCompatActivity {
         controller = new EarthquakeListController(new ViewModelProvider(this).get(EarthquakeViewModel.class));
         controller.startDefaultRequest();
     }
-
 }
