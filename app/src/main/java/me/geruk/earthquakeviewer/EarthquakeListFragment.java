@@ -61,10 +61,10 @@ public class EarthquakeListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final Earthquake eq = localEarthquakeData.get(position);
-            holder.time.setText(eq.getTime().format(
-                    DateTimeFormatter.ofPattern(TimeFormatterUtil.TIME_FORMAT)));
-            holder.latlng.setText(
-                    String.valueOf(eq.getLatitude()) + " " + String.valueOf(eq.getLongitude()));
+            holder.time.setText(getString(
+                    R.string.row_subtitle,
+                    eq.getTime().format(DateTimeFormatter.ofPattern(TimeFormatterUtil.TIME_FORMAT))));
+            holder.latlng.setText(getString(R.string.row_title, eq.getLatitude(), eq.getLongitude()));
             holder.magnitude.setText(String.valueOf(eq.getMagnitude()));
             Drawable background = ResourcesCompat.getDrawable(
                     getResources(),

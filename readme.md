@@ -9,7 +9,7 @@ Copyrighted by DAN geruk@geruk.me.
  * Display a list of earthquakes surrounding a given location
  * Display a detailed view of a single earthquake
  * Support screen orientation change
-2. ** Additional features **
- * Allow location to change
+2. ** Potential features **
+ * Allow location change and look up API with different parameters
  * Switch between list view and map view
- * Update earthquakes based on map movement
+ * Better Material Design transition between item click and map view.
