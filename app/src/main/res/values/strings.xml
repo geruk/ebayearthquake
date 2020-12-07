@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Earthquake Viewer</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="magnitude">Magnitude: %1$.1f</string>
 </resources>

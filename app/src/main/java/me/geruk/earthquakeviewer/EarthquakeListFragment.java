@@ -2,7 +2,6 @@ package me.geruk.earthquakeviewer;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import me.geruk.earthquakeviewer.controller.EarthquakeListController;
 import me.geruk.earthquakeviewer.model.Earthquake;
 import me.geruk.earthquakeviewer.model.EarthquakeViewModel;
 import me.geruk.earthquakeviewer.util.TimeFormatterUtil;
@@ -62,7 +60,7 @@ public class EarthquakeListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Earthquake eq = localEarthquakeData.get(position);
+            final Earthquake eq = localEarthquakeData.get(position);
             holder.time.setText(eq.getTime().format(
                     DateTimeFormatter.ofPattern(TimeFormatterUtil.TIME_FORMAT)));
             holder.latlng.setText(
@@ -73,6 +71,12 @@ public class EarthquakeListFragment extends Fragment {
                     eq.getMagnitude() >= 8.0 ? R.drawable.red_circular_textview : R.drawable.yellow_circular_textview,
                     null);
             holder.magnitude.setBackground(background);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((EarthquakeViewActivity) getActivity()).onOpenEarthquakeDetail(eq);
+                }
+            });
         }
 
         @Override
@@ -85,7 +89,7 @@ public class EarthquakeListFragment extends Fragment {
     EarthquakeListAdapter earthquakeListAdapter;
 
     public EarthquakeListFragment() {
-        super(R.layout.list_fragment);
+        super(R.layout.earthquake_list_fragment);
     }
 
     @Override
