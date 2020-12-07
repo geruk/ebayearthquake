@@ -14,6 +14,7 @@ import java.util.List;
 import me.geruk.earthquakeviewer.R;
 import me.geruk.earthquakeviewer.model.Earthquake;
 import me.geruk.earthquakeviewer.model.EarthquakeViewModel;
+import me.geruk.earthquakeviewer.network.GetEarthquakeListAsyncTask;
 
 public class EarthquakeListController {
 
@@ -24,8 +25,17 @@ public class EarthquakeListController {
     }
 
     public void startDefaultRequest() {
-        // TODO: async task to request
-        earthquakeData.setEarthquakes(createTempList());
+        new GetEarthquakeListAsyncTask(new GetEarthquakeListAsyncTask.Callback() {
+            @Override
+            public void onSuccess(List<Earthquake> earthquakes) {
+                earthquakeData.setEarthquakes(earthquakes);
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        }).execute();
     }
 
     // TODO: delete

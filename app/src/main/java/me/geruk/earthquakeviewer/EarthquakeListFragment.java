@@ -38,7 +38,7 @@ public class EarthquakeListFragment extends Fragment {
     public class EarthquakeListAdapter extends RecyclerView.Adapter<EarthquakeListFragment.ViewHolder> {
 
 
-        private List<Earthquake> localEarthquakeData;
+        private @Nullable List<Earthquake> localEarthquakeData;
 
         // TODO: perf - diff the dataset
         public void setLocalEarthquakeData(List<Earthquake> localEarthquakeData) {
@@ -61,7 +61,7 @@ public class EarthquakeListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return localEarthquakeData.size();
+            return localEarthquakeData == null ? 0 : localEarthquakeData.size();
         }
     }
 
